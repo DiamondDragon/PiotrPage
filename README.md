@@ -1,4 +1,4 @@
-# Сайт-визитка «Wykończenia Wnętrz Piotr Janicki»
+# Сайт-визитка «Wykończenia Wnętrz Piotr »
 
 Шаблон для GitHub Pages. Каждая папка внутри `galerie/` — это отдельная галерея.
 Все галереи показываются на одной странице в разделе «Realizacje». Клик по обложке
@@ -38,7 +38,7 @@
 3. В пункте **Source** выберите **Deploy from a branch**, ветку `main` и папку `/ (root)`, затем нажмите **Save**.
 4. Через пару минут сайт появится по адресу `https://ВАШ-ЛОГИН.github.io/ИМЯ-РЕПОЗИТОРИЯ/`.
 
-Свой домен (например `janicki-wykonczenia.pl`) подключается там же, в **Settings → Pages → Custom domain**.
+Свой домен (например `-wykonczenia.pl`) подключается там же, в **Settings → Pages → Custom domain**.
 
 ## Советы по фото
 
