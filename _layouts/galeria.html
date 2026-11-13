@@ -1,0 +1,13 @@
+{%- assign id = page.dir | split: "/" | last -%}
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>{{ page.title }} – {{ site.title }}</title>
+<meta http-equiv="refresh" content="0; url={{ '/' | relative_url }}#{{ id }}">
+<link rel="canonical" href="{{ '/' | relative_url }}#{{ id }}">
+</head>
+<body>
+<p><a href="{{ '/' | relative_url }}#{{ id }}">Przejdź do galerii „{{ page.title }}”</a></p>
+</body>
+</html>

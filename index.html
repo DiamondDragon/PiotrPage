@@ -1,0 +1,232 @@
+---
+layout: pusty
+---
+{%- assign f = site.firma -%}
+{%- if f.telefon_link and f.telefon_link != "" -%}{%- capture tel_href -%}tel:{{ f.telefon_link }}{%- endcapture -%}{%- else -%}{%- assign tel_href = "#kontakt" -%}{%- endif -%}
+{%- assign galerie = site.pages | where_exp: "p", "p.dir contains '/galerie/'" | where: "name", "index.md" | sort: "kolejnosc", "last" -%}
+{%- assign kategorie = galerie | map: "kategoria" | compact | uniq -%}
+<!doctype html>
+<html lang="{{ site.lang | default: 'pl' }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site.title }} – {{ f.obszar }}</title>
+<meta name="description" content="{{ site.description }}">
+<meta property="og:title" content="{{ site.title }}">
+<meta property="og:description" content="{{ site.description }}">
+<meta property="og:image" content="{{ f.hero | absolute_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+
+<header class="naglowek">
+  <div class="wrap naglowek__wnetrze">
+    <a class="logo" href="#start">
+      <span class="logo__nazwa">Piotr Janicki</span>
+      <span class="logo__opis">wykończenia wnętrz</span>
+    </a>
+    <nav class="menu" aria-label="Menu główne">
+      <a href="#o-firmie">O firmie</a>
+      <a href="#uslugi">Usługi</a>
+      <a href="#realizacje">Realizacje</a>
+      <a href="#kontakt">Kontakt</a>
+      <a class="przycisk przycisk--obrys" href="{{ tel_href }}">Zadzwoń: {{ f.telefon }}</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="start" class="hero">
+  <div class="wrap hero__wnetrze">
+    <div class="hero__tekst">
+      <p class="hero__obszar">{{ f.obszar }}</p>
+      <h1>Wykończenia wnętrz od surowych ścian po ostatni detal</h1>
+      <p class="hero__lead">Mieszkania, domy, łazienki i lokale usługowe. Precyzyjne wykonanie, przejrzysta wycena i jedna osoba odpowiedzialna za całość prac.</p>
+      <div class="przyciski">
+        <a class="przycisk przycisk--pelny" href="#kontakt">Umów bezpłatną wycenę</a>
+        <a class="przycisk przycisk--obrys" href="#realizacje">Zobacz realizacje</a>
+      </div>
+      <a class="ocena" href="{{ f.opinie_google }}" target="_blank" rel="noopener">
+        <svg width="104" height="18" viewBox="0 0 104 18" aria-hidden="true"><g fill="currentColor"><path d="M9 1l2.4 5 5.5.7-4 3.8 1 5.4L9 13.3 4.1 15.9l1-5.4-4-3.8 5.5-.7z"/><path transform="translate(21 0)" d="M9 1l2.4 5 5.5.7-4 3.8 1 5.4L9 13.3 4.1 15.9l1-5.4-4-3.8 5.5-.7z"/><path transform="translate(42 0)" d="M9 1l2.4 5 5.5.7-4 3.8 1 5.4L9 13.3 4.1 15.9l1-5.4-4-3.8 5.5-.7z"/><path transform="translate(63 0)" d="M9 1l2.4 5 5.5.7-4 3.8 1 5.4L9 13.3 4.1 15.9l1-5.4-4-3.8 5.5-.7z"/><path transform="translate(84 0)" d="M9 1l2.4 5 5.5.7-4 3.8 1 5.4L9 13.3 4.1 15.9l1-5.4-4-3.8 5.5-.7z"/></g></svg>
+        <span><strong>{{ f.ocena }}</strong> w opiniach Google</span>
+      </a>
+    </div>
+    <figure class="hero__zdjecie">
+      <img src="{{ f.hero | relative_url }}" alt="Przykładowa realizacja – wykończone wnętrze" fetchpriority="high">
+    </figure>
+  </div>
+</section>
+
+<section id="o-firmie" class="sekcja">
+  <div class="wrap dwie-kolumny">
+    <h2>Dbam o każdy etap i każdy detal</h2>
+    <div class="tekst">
+      <p>Nazywam się Piotr Janicki i zajmuję się wykańczaniem wnętrz mieszkań, domów oraz lokali usługowych. Każde zlecenie prowadzę osobiście – od pierwszego spotkania i wyceny, przez przygotowanie ścian i podłóg, aż po montaż ostatniej listwy. Klient ma jedną osobę do kontaktu, a ja pełną kontrolę nad jakością na każdym etapie.</p>
+      <p>Szczególnie dobrze czuję się w projektach, w których liczy się detal: łazienkach z płytami wielkoformatowymi i spiekami, ścianach z podświetleniem LED, okładzinach lamelowych czy montażu wanien wolnostojących. Chętnie realizuję projekty architektów wnętrz, a gdy projektu nie ma – doradzam w doborze materiałów i rozwiązań.</p>
+    </div>
+  </div>
+</section>
+
+<section id="uslugi" class="sekcja sekcja--kamien">
+  <div class="wrap">
+    <h2>Zakres usług</h2>
+    <ul class="uslugi">
+      <li><h3>Wykończenia pod klucz</h3><p>Mieszkania z rynku pierwotnego i wtórnego, domy oraz lokale usługowe.</p></li>
+      <li><h3>Łazienki</h3><p>Płytki i spieki wielkoformatowe, stelaże, odpływy liniowe, montaż wanien, kabin i armatury.</p></li>
+      <li><h3>Gładzie i malowanie</h3><p>Przygotowanie ścian i sufitów, gładzie gipsowe, malowanie.</p></li>
+      <li><h3>Zabudowy z płyt g-k</h3><p>Ścianki działowe, sufity podwieszane, wnęki i półki.</p></li>
+      <li><h3>Podświetlenia LED</h3><p>Dekoracyjne oświetlenie wnęk, zabudów i okładzin ściennych.</p></li>
+      <li><h3>Podłogi</h3><p>Płytki, panele i deski wraz z listwami przypodłogowymi.</p></li>
+      <li><h3>Montaż drzwi</h3><p>Drzwi wewnętrzne z ościeżnicami i okuciami.</p></li>
+      <li><h3>Elementy dekoracyjne</h3><p>Panele lamelowe i ryflowane, sztukateria, tapety.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section id="realizacje" class="sekcja">
+  <div class="wrap">
+    <div class="realizacje__gora">
+      <h2>Realizacje</h2>
+      {%- if kategorie.size > 1 %}
+      <div class="filtry" role="group" aria-label="Pokaż realizacje">
+        <button type="button" data-filtr="wszystkie" aria-pressed="true">Wszystkie</button>
+        {%- for k in kategorie %}
+        <button type="button" data-filtr="{{ k | slugify: 'latin' }}" aria-pressed="false">{{ k }}</button>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+    </div>
+
+    <div class="galerie">
+    {%- for g in galerie -%}
+      {%- assign zdjecia = "" | split: "" -%}
+      {%- assign pliki = site.static_files | where_exp: "s", "s.path contains g.dir" | sort: "path" -%}
+      {%- for s in pliki -%}
+        {%- assign ext = s.extname | downcase -%}
+        {%- if ext == ".jpg" or ext == ".jpeg" or ext == ".png" or ext == ".webp" or ext == ".gif" or ext == ".avif" -%}
+          {%- assign zdjecia = zdjecia | push: s -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if zdjecia.size > 0 -%}
+        {%- assign okladka = nil -%}
+        {%- if g.okladka -%}
+          {%- for s in zdjecia -%}{%- if s.name == g.okladka -%}{%- assign okladka = s -%}{%- endif -%}{%- endfor -%}
+        {%- endif -%}
+        {%- unless okladka -%}
+          {%- for s in zdjecia -%}{%- assign bn = s.basename | downcase -%}{%- if bn == "okladka" or bn == "cover" -%}{%- assign okladka = s -%}{%- endif -%}{%- endfor -%}
+        {%- endunless -%}
+        {%- unless okladka -%}{%- assign okladka = zdjecia.first -%}{%- endunless -%}
+        {%- assign start = 0 -%}
+        {%- for s in zdjecia -%}{%- if s.path == okladka.path -%}{%- assign start = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+
+        {%- assign n = zdjecia.size -%}
+        {%- assign m10 = n | modulo: 10 -%}
+        {%- assign m100 = n | modulo: 100 -%}
+        {%- if n == 1 -%}{%- assign slowo = "zdjęcie" -%}
+        {%- elsif m10 >= 2 and m10 <= 4 and m100 < 12 -%}{%- assign slowo = "zdjęcia" -%}
+        {%- elsif m10 >= 2 and m10 <= 4 and m100 > 14 -%}{%- assign slowo = "zdjęcia" -%}
+        {%- else -%}{%- assign slowo = "zdjęć" -%}{%- endif -%}
+        {%- assign gid = g.dir | split: "/" | last %}
+      <article class="galeria" id="{{ gid }}" data-kategoria="{{ g.kategoria | slugify: 'latin' }}" data-start="{{ start }}">
+        <button type="button" class="galeria__okladka" aria-label="Otwórz galerię: {{ g.title | escape }} ({{ n }} {{ slowo }})">
+          <img src="{{ okladka.path | relative_url }}" alt="{{ g.podpisy[okladka.name] | default: g.title | escape }}" loading="lazy">
+          <span class="galeria__licznik">{{ n }} {{ slowo }}</span>
+        </button>
+        <div class="galeria__opis">
+          <h3>{{ g.title }}</h3>
+          {%- if g.kategoria %}<p class="galeria__kategoria">{{ g.kategoria }}</p>{% endif %}
+          {%- if g.opis %}<p>{{ g.opis | strip }}</p>{% endif %}
+        </div>
+        <script type="application/json" class="galeria__dane">[
+          {%- for s in zdjecia -%}
+          {"src":{{ s.path | relative_url | jsonify }},"podpis":{{ g.podpisy[s.name] | default: "" | jsonify }}}{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]</script>
+      </article>
+      {%- endif -%}
+    {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sekcja sekcja--ciemna">
+  <div class="wrap">
+    <h2>Jak pracuję</h2>
+    <ol class="kroki">
+      <li><strong>Kontakt i oględziny</strong><span>Spotykamy się na miejscu i omawiamy zakres prac.</span></li>
+      <li><strong>Wycena</strong><span>Przejrzysty kosztorys bez ukrytych kosztów.</span></li>
+      <li><strong>Harmonogram</strong><span>Ustalamy terminy rozpoczęcia i zakończenia.</span></li>
+      <li><strong>Realizacja</strong><span>Staranna praca, porządek i bieżące informacje o postępach.</span></li>
+      <li><strong>Odbiór</strong><span>Wspólnie sprawdzamy efekt – wnętrze jest gotowe.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sekcja">
+  <div class="wrap">
+    <h2>Na czym możesz polegać</h2>
+    <ul class="atuty">
+      <li><strong>Dokładność</strong><span>Precyzyjne docięcia, równe fugi i dopracowane narożniki.</span></li>
+      <li><strong>Terminowość</strong><span>Prace prowadzone zgodnie z ustalonym harmonogramem.</span></li>
+      <li><strong>Doradztwo</strong><span>Pomoc w doborze materiałów, które posłużą latami.</span></li>
+      <li><strong>Zadowoleni klienci</strong><span>Ocena {{ f.ocena }} w <a href="{{ f.opinie_google }}" target="_blank" rel="noopener">opiniach Google</a>.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="kontakt" class="sekcja sekcja--kamien">
+  <div class="wrap dwie-kolumny">
+    <div>
+      <h2>Porozmawiajmy o Twoim wnętrzu</h2>
+      <p class="kontakt__lead">Zadzwoń lub napisz – umówimy oględziny i przygotuję wycenę.</p>
+      <div class="przyciski">
+        <a class="przycisk przycisk--ciemny" href="{{ tel_href }}">Zadzwoń</a>
+        <a class="przycisk przycisk--obrys-ciemny" href="mailto:{{ f.email }}">Napisz e-mail</a>
+      </div>
+    </div>
+    <dl class="dane">
+      <dt>Telefon</dt><dd>{{ f.telefon }}</dd>
+      <dt>E-mail</dt><dd>{{ f.email }}</dd>
+      <dt>Obszar</dt><dd>{{ f.obszar }}</dd>
+      <dt>Godziny</dt><dd>{{ f.godziny }}</dd>
+    </dl>
+  </div>
+</section>
+
+</main>
+
+<footer class="stopka">
+  <div class="wrap stopka__wnetrze">
+    <span>© {{ site.time | date: "%Y" }} {{ site.title }}</span>
+    <span>NIP: {{ f.nip }}</span>
+  </div>
+</footer>
+
+<dialog id="lightbox" class="lb" aria-label="Galeria zdjęć">
+  <div class="lb__gora">
+    <p class="lb__tytul"></p>
+    <span class="lb__licznik" aria-live="polite"></span>
+    <button type="button" class="lb__zamknij" aria-label="Zamknij galerię">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="lb__scena">
+    <button type="button" class="lb__nav lb__nav--wstecz" aria-label="Poprzednie zdjęcie">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <img class="lb__img" src="" alt="">
+    <button type="button" class="lb__nav lb__nav--dalej" aria-label="Następne zdjęcie">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+  <p class="lb__podpis"></p>
+</dialog>
+
+<script src="{{ '/assets/galeria.js' | relative_url }}" defer></script>
+</body>
+</html>

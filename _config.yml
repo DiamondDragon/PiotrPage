@@ -1,0 +1,29 @@
+# ─────────────────────────────────────────────
+#  Dane firmy — zmieniaj tylko wartości po dwukropku
+# ─────────────────────────────────────────────
+title: "Wykończenia Wnętrz Piotr Janicki"
+description: "Kompleksowe wykończenia mieszkań, domów i łazienek w Łodzi i okolicach. Bezpłatna wycena."
+lang: pl
+
+firma:
+  telefon: "[NUMER TELEFONU]"        # tak, jak ma się wyświetlać, np. "600 123 456"
+  telefon_link: ""                   # do kliknięcia na telefonie, np. "+48600123456"
+  email: "[ADRES E-MAIL]"
+  obszar: "Łódź i okolice"
+  godziny: "[pon.–pt. 8:00–17:00]"
+  nip: "[NIP]"
+  opinie_google: "https://g.page/r/CQsyc5Zs3vgoEBM/review"
+  ocena: "5,0"
+  hero: "/assets/hero.jpg"           # duże zdjęcie na górze strony
+
+# ─────────────────────────────────────────────
+#  Ustawienia techniczne — nie trzeba ruszać
+# ─────────────────────────────────────────────
+defaults:
+  - scope:
+      path: "galerie"
+    values:
+      layout: "galeria"
+
+exclude:
+  - README.md
